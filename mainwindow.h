@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <QMainWindow>
+#include <QLCDNumber>
 #include <QAbstractButton>
+
 
 
 namespace Ui {
@@ -23,6 +25,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    //Lcd panel
+    QLCDNumber *lcdPanel;
 };
 
 #endif // MAINWINDOW_H
