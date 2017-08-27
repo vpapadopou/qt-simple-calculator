@@ -23,6 +23,7 @@ public:
 
 private slots:
     void numberGroup_clicked(QAbstractButton*);
+    void actionGroup_clicked(QAbstractButton*);
 
 private:
     Ui::MainWindow *ui;
@@ -30,7 +31,7 @@ private:
     QLCDNumber *lcdPanel;
     //Numbers and operators
     std::deque <QString> numbers;
-    std::deque <char> operators;
+    std::deque <QChar> operators;
 };
 
 #endif // MAINWINDOW_H
