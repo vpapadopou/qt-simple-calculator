@@ -110,3 +110,62 @@ void MainWindow::on_actionDel_clicked()
         }
     }
 }
+
+void MainWindow::on_actionCalc_clicked()
+{
+    //Only calculate if there are at least 2 numbers (and consequently at least one operator)
+    if (numbers.size() < 2) {
+        return;
+    }
+
+    //Get the first number and set it as result
+    int result = numbers.front().toInt() ;
+    //Remove it from deque
+    numbers.pop_front();
+
+
+    while (numbers.size() > 0) {
+        //Get number and convert to long long
+        int number = numbers.front().toInt();
+        numbers.pop_front();
+        //Get operator
+        QChar op = operators.front();
+        operators.pop_front();
+        //Decide what to do according to operation
+        switch (op.unicode()) {
+        case '+':
+            result += number;
+            std::cout << "Plus" << std::endl;
+            break;
+        case '-':
+            std::cout << "Minus" << std::endl;
+            result -= number;
+            break;
+        case 'x':
+            std::cout << "Mul" << std::endl;
+            result *= number;
+            break;
+        case '/':
+            std::cout << "Div" << std::endl;
+            result /= number;
+            break;
+        }
+    }
+
+
+    std::cout << "Result: " << result << std::endl;
+
+    /* Finally set the number to the lcd screen
+     * Note: Since the lcd screen has only 8 digits, update only if our number is less than that
+     * Otherwise we will eventually get 0 because of overflow */
+    lcdPanel->display(result);
+
+    /* Clear the operator deque (the numbers one should be empty already) and add an empty slot to the
+     * numbers one. */
+
+    operators.clear();
+    numbers.push_back("EMPTY");
+
+
+
+}

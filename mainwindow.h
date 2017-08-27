@@ -27,6 +27,8 @@ private slots:
 
     void on_actionDel_clicked();
 
+    void on_actionCalc_clicked();
+
 private:
     Ui::MainWindow *ui;
     //Lcd panel
