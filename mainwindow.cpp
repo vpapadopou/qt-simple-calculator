@@ -79,7 +79,7 @@ void MainWindow::actionGroup_clicked(QAbstractButton* button)
     else {
         /* Check first whether there is at least a valid number store in the numbers deque.
          * If not it would not make sense to add the operator.
-         * In layman's terms first button clicked is an operator */
+         * In layman's terms check if first button clicked is an operator */
         std::cout << "Replace" << std::endl;
         if (numbers.size() > 1) {
             operators.back() = button->text().at(0);
@@ -87,4 +87,26 @@ void MainWindow::actionGroup_clicked(QAbstractButton* button)
         }
     }
 
+}
+
+void MainWindow::on_actionDel_clicked()
+{
+    //Delete the last digit of the last number, only if it is not an empty slot
+    if (QString::compare(numbers.back(), "EMPTY", Qt::CaseSensitive)) {
+        /* If there is only one number and we want to delete it, we denote the
+         * number slot as empty and display 0 in the LCD screen */
+        if (numbers.back().QString::length() <= 1) {
+            numbers.back() = "EMPTY";
+            lcdPanel->display(0);
+        }
+        else {
+            numbers.back().QString::chop(1);
+            /* Finally set the number to the lcd screen
+             * Note: Since the lcd screen has only 8 digits, update only if our number is less than that
+             * Otherwise we will eventually get 0 because of overflow */
+            if (numbers.back().QString::length() <= 8) {
+                lcdPanel->display(numbers.back().toInt());
+            }
+        }
+    }
 }

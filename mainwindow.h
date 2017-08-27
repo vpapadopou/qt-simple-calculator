@@ -25,6 +25,8 @@ private slots:
     void numberGroup_clicked(QAbstractButton*);
     void actionGroup_clicked(QAbstractButton*);
 
+    void on_actionDel_clicked();
+
 private:
     Ui::MainWindow *ui;
     //Lcd panel
