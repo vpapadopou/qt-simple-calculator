@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <iostream>
+#include <deque>
 #include <QMainWindow>
 #include <QLCDNumber>
 #include <QAbstractButton>
@@ -27,6 +28,9 @@ private:
     Ui::MainWindow *ui;
     //Lcd panel
     QLCDNumber *lcdPanel;
+    //Numbers and operators
+    std::deque <QString> numbers;
+    std::deque <char> operators;
 };
 
 #endif // MAINWINDOW_H
