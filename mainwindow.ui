@@ -2,67 +2,127 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>306</width>
-    <height>400</height>
+    <height>319</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>2</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #f5f5f5;
+color: rgb(0, 0, 0);
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
     <string notr="true">QPushButton {
 min-width: 65;
-min-height: 50;
+min-height: 40;
 max-width: 65;
-max-height: 50;
+max-height: 40;
 }</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLCDNumber" name="lcdNumber">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
+     <widget class="QLabel" name="displayPanel">
+      <property name="maximumSize">
        <size>
-        <width>0</width>
-        <height>70</height>
+        <width>300</width>
+        <height>40</height>
        </size>
       </property>
-      <property name="digitCount">
-       <number>8</number>
+      <property name="font">
+       <font>
+        <family>Serif</family>
+        <pointsize>22</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1 solid #b8b8b8;
+background-color: #fff;</string>
+      </property>
+      <property name="text">
+       <string>TextLabel 2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QPushButton" name="num1">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+       <widget class="QPushButton" name="actionClear">
+        <property name="styleSheet">
+         <string notr="true">background-color: #cd3238;
+color: #ffffff;</string>
         </property>
         <property name="text">
-         <string>1</string>
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionDel">
+        <property name="text">
+         <string>Del</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionMod">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionDiv">
+        <property name="text">
+         <string>/</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">actionGroup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="num7">
+        <property name="text">
+         <string>7</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -70,15 +130,9 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="num2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QPushButton" name="num8">
         <property name="text">
-         <string>2</string>
+         <string>8</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -86,15 +140,9 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="num3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QPushButton" name="num9">
         <property name="text">
-         <string>3</string>
+         <string>9</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -102,9 +150,9 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="actionPlus">
+       <widget class="QPushButton" name="actionMul">
         <property name="text">
-         <string>+</string>
+         <string>x</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">actionGroup</string>
@@ -158,11 +206,32 @@ max-height: 50;
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QPushButton" name="num7">
+       <widget class="QPushButton" name="num1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>67</width>
+          <height>42</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>67</width>
+          <height>42</height>
+         </size>
+        </property>
         <property name="text">
-         <string>7</string>
+         <string>1</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -170,9 +239,15 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="num8">
+       <widget class="QPushButton" name="num2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>8</string>
+         <string>2</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -180,9 +255,21 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="num9">
+       <widget class="QPushButton" name="num3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>67</width>
+          <height>42</height>
+         </size>
+        </property>
         <property name="text">
-         <string>9</string>
+         <string>3</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">numberGroup</string>
@@ -190,9 +277,9 @@ max-height: 50;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="ActionMul">
+       <widget class="QPushButton" name="actionPlus">
         <property name="text">
-         <string>x</string>
+         <string>+</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">actionGroup</string>
@@ -207,13 +294,6 @@ max-height: 50;
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="actionDel">
-        <property name="text">
-         <string>DEL</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="num0">
         <property name="text">
          <string>0</string>
@@ -224,25 +304,43 @@ max-height: 50;
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="comma">
+        <property name="text">
+         <string>.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>+/-</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="actionCalc">
+        <property name="styleSheet">
+         <string notr="true">background-color: #3490cd;
+color: #ffffff;</string>
+        </property>
         <property name="text">
          <string>=</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="actionDiv">
-        <property name="text">
-         <string>/</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">actionGroup</string>
-        </attribute>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>306</width>
+     <height>19</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

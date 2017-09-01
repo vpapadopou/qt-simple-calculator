@@ -29,13 +29,22 @@ private slots:
 
     void on_actionCalc_clicked();
 
+    void on_comma_clicked();
+
+    void on_actionClear_clicked();
+
 private:
     Ui::MainWindow *ui;
-    //Lcd panel
-    QLCDNumber *lcdPanel;
-    //Numbers and operators
-    std::deque <QString> numbers;
-    std::deque <QChar> operators;
+    //Digit limit
+    const int DIGIT_LIMIT = 16;
+    //Flag to check whether the previous button that was clicked was an operator
+    bool operatorClicked;
+    //Last operator requested
+    QChar storedOperator;
+    //Flag to check whether a number is stored in memory
+    bool hasStoredNumber;
+    //Stored number
+    double storedNumber;
 };
 
 #endif // MAINWINDOW_H
