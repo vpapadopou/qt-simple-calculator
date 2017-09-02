@@ -1,8 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <iostream>
 #include <QMainWindow>
 #include <QAbstractButton>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +45,9 @@ private:
     double storedNumber;
     //Calculate result based on stored number and displayed number
     void calculate_result();
+
+protected:
+    void keyPressEvent(QKeyEvent *e);
 };
 
 #endif // MAINWINDOW_H

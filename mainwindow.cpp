@@ -221,3 +221,73 @@ void MainWindow::calculate_result() {
      //Set number back to display
      ui->displayPanel->setText(displayLabel);
 }
+
+//Keyboard buttons should call the corresponding functions
+void MainWindow::keyPressEvent(QKeyEvent *e) {
+    switch (e->key()) {
+        //Numbers
+        case Qt::Key_1:
+            numberGroup_clicked(ui->num1);
+            break;
+        case Qt::Key_2:
+            numberGroup_clicked(ui->num2);
+            break;
+        case Qt::Key_3:
+            numberGroup_clicked(ui->num3);
+            break;
+        case Qt::Key_4:
+            numberGroup_clicked(ui->num4);
+            break;
+        case Qt::Key_5:
+            numberGroup_clicked(ui->num5);
+            break;
+        case Qt::Key_6:
+            numberGroup_clicked(ui->num6);
+            break;
+        case Qt::Key_7:
+            numberGroup_clicked(ui->num7);
+            break;
+        case Qt::Key_8:
+            numberGroup_clicked(ui->num8);
+            break;
+        case Qt::Key_9:
+            numberGroup_clicked(ui->num9);
+            break;
+        case Qt::Key_0:
+            numberGroup_clicked(ui->num0);
+            break;
+        //Operators
+        case Qt::Key_Plus:
+            actionGroup_clicked(ui->actionPlus);
+            break;
+        case Qt::Key_Minus:
+            actionGroup_clicked(ui->actionMinus);
+            break;
+        case Qt::Key_Asterisk:
+            actionGroup_clicked(ui->actionMul);
+            break;
+        case Qt::Key_Slash:
+            actionGroup_clicked(ui->actionDiv);
+            break;
+        //Comma
+        case Qt::Key_Period:
+            on_comma_clicked();
+            break;
+        //Return (enter)
+        case Qt::Key_Enter:
+        case Qt::Key_Return:
+            on_actionCalc_clicked();
+            break;
+        //Backspace and delete
+        case Qt::Key_Backspace:
+            on_actionDel_clicked();
+            break;
+        case Qt::Key_Delete:
+            on_actionClear_clicked();
+            break;
+        //Percentage
+        case Qt::Key_Percent:
+            on_actionPercent_clicked();
+            break;
+    }
+}
