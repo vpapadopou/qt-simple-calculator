@@ -108,7 +108,7 @@ background-color: #fff;</string>
       <item>
        <widget class="QPushButton" name="actionClear">
         <property name="styleSheet">
-         <string notr="true">background-color: #cd3238;
+         <string notr="true">background-color: #cb1a21;
 color: #ffffff;</string>
         </property>
         <property name="text">
@@ -368,7 +368,7 @@ color: #ffffff;</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="numberGroup"/>
   <buttongroup name="actionGroup"/>
+  <buttongroup name="numberGroup"/>
  </buttongroups>
 </ui>
