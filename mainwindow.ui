@@ -89,8 +89,17 @@ background-color: #fff;</string>
       <property name="text">
        <string/>
       </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
       </property>
      </widget>
     </item>
