@@ -21,12 +21,13 @@ private slots:
     void actionGroup_clicked(QAbstractButton*);
 
     void on_actionDel_clicked();
-
     void on_actionCalc_clicked();
-
     void on_comma_clicked();
-
     void on_actionClear_clicked();
+
+    void on_actionPercent_clicked();
+
+    void on_actionSign_clicked();
 
 private:
     Ui::MainWindow *ui;

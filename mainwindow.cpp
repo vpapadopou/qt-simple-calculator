@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //Set operator button group listener
     ui->actionGroup->connect(ui->actionGroup,SIGNAL(buttonClicked(QAbstractButton*)),
                              this, SLOT(actionGroup_clicked(QAbstractButton*)));
+
+    //Set window fix width and height
+    this->setFixedSize(QSize(306, 319));
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +30,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+//==================================================================================
+//Slot functions
+//==================================================================================
 // Called whenever a number button is clicked
 void MainWindow::numberGroup_clicked(QAbstractButton* button)
 {
@@ -156,6 +161,37 @@ void MainWindow::on_actionClear_clicked()
     hasStoredNumber = false;
 }
 
+void MainWindow::on_actionPercent_clicked()
+{
+    //Get string from display
+    QString displayLabel = ui->displayPanel->text();
+    //Convert to double
+    double percentage = displayLabel.toDouble();
+    //Just multiply with 0.01 to make it a percentage
+    percentage *= 0.01;
+    //Since there might be an overflow, its best to convert the number carefully
+    displayLabel = QString::number(percentage,'g', DIGIT_LIMIT);
+    //Set number back to display
+    ui->displayPanel->setText(displayLabel);
+}
+
+void MainWindow::on_actionSign_clicked()
+{
+    //Get string from display
+    QString displayLabel = ui->displayPanel->text();
+    //Convert to double
+    double percentage = displayLabel.toDouble();
+    //Just multiply with -1 to change its sign
+    percentage *= -1;
+    //Convert the number carefully
+    displayLabel = QString::number(percentage,'g', DIGIT_LIMIT);
+    //Set number back to display
+    ui->displayPanel->setText(displayLabel);
+}
+
+//==================================================================================
+//Helper functions
+//==================================================================================
 void MainWindow::calculate_result() {
     //Get string from display
     QString displayLabel = ui->displayPanel->text();
