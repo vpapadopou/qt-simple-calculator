@@ -1,13 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <iostream>
-#include <deque>
 #include <QMainWindow>
-#include <QLCDNumber>
 #include <QAbstractButton>
-
-
 
 namespace Ui {
 class MainWindow;
@@ -45,6 +40,8 @@ private:
     bool hasStoredNumber;
     //Stored number
     double storedNumber;
+    //Calculate result based on stored number and displayed number
+    void calculate_result();
 };
 
 #endif // MAINWINDOW_H

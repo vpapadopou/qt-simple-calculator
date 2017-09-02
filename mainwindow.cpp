@@ -31,8 +31,6 @@ MainWindow::~MainWindow()
 // Called whenever a number button is clicked
 void MainWindow::numberGroup_clicked(QAbstractButton* button)
 {
-    std::cout << "You have clicked button: " << button->text().toStdString() << std::endl;
-
     //Get string from display
     QString displayLabel = ui->displayPanel->text();
 
@@ -54,18 +52,11 @@ void MainWindow::numberGroup_clicked(QAbstractButton* button)
 
     //Set number back to display
     ui->displayPanel->setText(displayLabel);
-
-    //Convert string to double
-    //double displayNumber = displayLabel.toDouble();
-
-    //displayLabel = QString::number(displayNumber,'g', DIGIT_LIMIT);
 }
 
 // Called whenever an action button is clicked
 void MainWindow::actionGroup_clicked(QAbstractButton* button)
 {
-    std::cout << "You have clicked button: " << button->text().toStdString() << std::endl;
-
     /* If the previous button that was clicked was not an operator, then we just need to save the operator
      * that was requested and exit.
      * If it was though, we need to see whether we just need to save the number that is
@@ -75,22 +66,16 @@ void MainWindow::actionGroup_clicked(QAbstractButton* button)
 
     if (operatorClicked) {
         storedOperator = button->text().at(0);
-        std::cout << "Change Operator " << std::endl;
     }
     else {
-        std::cout << "New Operator " << std::endl;
-
-        //Get string from display
-        QString displayLabel = ui->displayPanel->text();
-
         if (hasStoredNumber) {
-            //calculate here
-            std::cout << "calculate " << std::endl;
-            on_actionCalc_clicked();
+            calculate_result();
         }
         else {
             //Set the flag to indicate that we now have a number stored in memory
             hasStoredNumber = true;
+            //Get string from display
+            QString displayLabel = ui->displayPanel->text();
             //Convert string to double and save
             storedNumber = displayLabel.toDouble();
         }
@@ -126,39 +111,15 @@ void MainWindow::on_actionCalc_clicked()
      * The last button that was clicked should not be an operator */
 
     if (!hasStoredNumber || displayLabel.length() < 1 || operatorClicked) {
-        std::cout << "Nope" << std::endl;
         return;
     }
 
-   //If the displayed number ends with a comma, drop the comma.
-    if (displayLabel.endsWith('.',Qt::CaseSensitive)) {
-        displayLabel.QString::chop(1);
-    }
+    //Calculate result and set in on display
+    calculate_result();
 
-    //Decide what to do according to operation
+    //Set stored number flag to false (we have it on screen now)
+    hasStoredNumber = false;
 
-    if (storedOperator == '+') {
-        storedNumber += displayLabel.toDouble();
-    }
-    else if (storedOperator == '-') {
-        storedNumber -= displayLabel.toDouble();
-    }
-    else if (storedOperator == 'x') {
-        storedNumber *= displayLabel.toDouble();
-    }
-    else if (storedOperator == '/') {
-        storedNumber /= displayLabel.toDouble();
-    }
-
-    //Since there might be an overflow, its best to convert the number carefully
-    displayLabel = QString::number(storedNumber,'g', DIGIT_LIMIT);
-
-    //Set number back to display
-    ui->displayPanel->setText(displayLabel);
-
-
-
-    std::cout << "Result: " << storedNumber << std::endl;
 }
 
 void MainWindow::on_comma_clicked()
@@ -193,4 +154,34 @@ void MainWindow::on_actionClear_clicked()
     //Set operator and store number flags to false
     operatorClicked = false;
     hasStoredNumber = false;
+}
+
+void MainWindow::calculate_result() {
+    //Get string from display
+    QString displayLabel = ui->displayPanel->text();
+
+    //If the displayed number ends with a comma, drop the comma.
+     if (displayLabel.endsWith('.',Qt::CaseSensitive)) {
+         displayLabel.QString::chop(1);
+     }
+
+     //Decide what to do according to operation
+     if (storedOperator == '+') {
+         storedNumber += displayLabel.toDouble();
+     }
+     else if (storedOperator == '-') {
+         storedNumber -= displayLabel.toDouble();
+     }
+     else if (storedOperator == 'x') {
+         storedNumber *= displayLabel.toDouble();
+     }
+     else if (storedOperator == '/') {
+         storedNumber /= displayLabel.toDouble();
+     }
+
+     //Since there might be an overflow, its best to convert the number carefully
+     displayLabel = QString::number(storedNumber,'g', DIGIT_LIMIT);
+
+     //Set number back to display
+     ui->displayPanel->setText(displayLabel);
 }

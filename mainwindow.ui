@@ -71,7 +71,7 @@ max-height: 40;
 background-color: #fff;</string>
       </property>
       <property name="text">
-       <string>TextLabel 2</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
