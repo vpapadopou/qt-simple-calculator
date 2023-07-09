@@ -102,7 +102,9 @@ void MainWindow::on_actionDel_clicked()
     }
 
     //Delete last digit from string
-    displayLabel.QString::chop(1);
+    if(displayLabel == "inf" || displayLabel == "-inf")
+        displayLabel.clear();
+    else displayLabel.QString::chop(1);
     //Set number back to display
     ui->displayPanel->setText(displayLabel);
 }
